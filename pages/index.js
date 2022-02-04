@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react/cjs/react.development';
+import { useState, useEffect } from 'react'
 import Head from 'next/head'
 
 
