@@ -1,6 +1,26 @@
+import { useEffect, useState } from 'react/cjs/react.development';
 import Head from 'next/head'
 
+
+
+
+
 export default function Home() {
+
+
+  // JavaScript demo: https://developers.google.com/speed/docs/insights/v5/get-started
+  function runAPICall() {
+    console.log("running function")
+    let pageSpeedInsightsResults = fetch('https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://developers.google.com')
+      .then(response => response.json())
+      .then(data => {
+        setCurrentResult(data)
+        console.log(data)
+      })
+  }
+
+  const [currentResult, setCurrentResult] = useState()
+
   return (
     <div>
       <Head>
@@ -12,6 +32,15 @@ export default function Home() {
 
       <div>
         Welcome to Speed Scanr!
+        <button onClick={runAPICall}>hello</button>
+        <div>
+
+          {currentResult ?
+            (<div>{currentResult.lighthouseResult.timing.total}</div>)
+            :
+            (<span>loading results</span>)
+          }
+        </div>
       </div>
 
 
