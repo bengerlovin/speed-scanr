@@ -9,10 +9,12 @@ export default function Footer() {
           <hr className='bg-gray-300'></hr>
 
           <div className='flex items-center justify-between max-w-3xl py-6'>
-            <div className='flex-shrink-0 w-1/4'>hello</div>
-            <div className='flex-shrink-0 w-1/4'>hello</div>
-            <div className='flex-shrink-0 w-1/4'>hello friendsssssss</div>
-            <div className='flex-shrink-0 w-1/4'>hello</div>
+            <div className='flex-shrink-0 w-1/4 text-gray-400'>hello</div>
+            <div className='flex-shrink-0 w-1/4 text-gray-400'>hello</div>
+            <div className='flex-shrink-0 w-1/4 text-gray-400'>
+              hello friendsssssss
+            </div>
+            <div className='flex-shrink-0 w-1/4 text-gray-400'>hello</div>
           </div>
         </div>
       </footer>
