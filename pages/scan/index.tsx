@@ -6,7 +6,7 @@ import React from 'react';
 export default function ScanResultsPage() {
   const router = useRouter();
 
-  const { url } = router.query;
+  const { url } = router.query; // router query can get multiple params?
 
   console.log(url);
 

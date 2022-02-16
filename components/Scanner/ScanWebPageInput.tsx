@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
+import { useFormik } from 'formik';
+import * as Yup from 'yup'
 
 /**
  * Component handles input validation and parsing of input URL for scanner API
@@ -11,34 +13,58 @@ import { useRouter } from 'next/router';
 
 export default function ScanWebPageInput() {
   const router = useRouter();
-  const [inputValue, setInputValue] = useState('');
 
-  function routeToScanPage() {
+  const initialValues = { url: '' }
+
+  const expression = /^(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+  const urlRegex = new RegExp(expression);
+
+  const formik = useFormik({
+    initialValues,
+    validationSchema: Yup.object({
+      url: Yup.string().matches(urlRegex, "URL must have http:// or https://").required('Please enter a URL'),
+    }),
+    onSubmit: ({ url }) => {
+      console.log('submit method', url)
+      routeToScanPage(url)
+      formik.resetForm();
+    },
+  });
+
+  //  Functions
+  function routeToScanPage(urlParam: string) {
     console.log('routing to scan page with url');
 
-    router.push('/scan?url=google.com');
+    router.push(`/scan?url=${urlParam}`);
   }
-
-  useEffect(() => {
-    console.log('in use effect hook', inputValue);
-  }, [inputValue]);
 
   return (
     <div>
-      <div className='mb-4'>Speed scanr project</div>
-      <div className='flex flex-col items-start'>
-        <div className='flex items-center gap-4'>
-          {/* call api button */}
-          <input
-            type='text'
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            className='rounded-md ring-1'
-          ></input>
 
-          <button onClick={() => routeToScanPage()}>Call scanner</button>
+      {/* call api button */}
+      <form onSubmit={formik.handleSubmit} className='flex items-start justify-start pl-0'>
+
+        <div>
+          <label htmlFor='url'></label>
+          <input
+            type='url'
+            id='url'
+            placeholder='http://example.com'
+            value={formik.values.url}
+            onChange={formik.handleChange}
+            className={`rounded-md ring-1 focus:ring-blue-500 ${formik.touched.url && formik.errors.url ? 'ring-1 focus:ring-red-500 focus:border-red-500 ring-red-400 outline-red-400 border-red-500' : ''}`}
+          ></input>
+          <button onClick={() => formik.handleSubmit} className='ml-4 px-3 py-1.5 bg-blue-700 rounded-md text-slate-100'>Call scanner</button>
         </div>
-      </div>
+
+      </form>
+
+      {formik.touched.url && formik.errors.url ? (
+        <div className='mt-2 font-medium text-red-500'>{formik.errors.url}</div>
+      ) : null}
+
     </div>
   );
 }
+
+
