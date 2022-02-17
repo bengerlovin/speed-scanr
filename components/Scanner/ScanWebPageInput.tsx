@@ -24,18 +24,18 @@ export default function ScanWebPageInput() {
     validationSchema: Yup.object({
       url: Yup.string().matches(urlRegex, "URL must have http:// or https://").required('Please enter a URL'),
     }),
-    onSubmit: ({ url }) => {
+    onSubmit: async ({ url }) => {
       console.log('submit method', url)
       routeToScanPage(url)
-      formik.resetForm();
     },
   });
 
   //  Functions
   function routeToScanPage(urlParam: string) {
     console.log('routing to scan page with url');
-
     router.push(`/scan?url=${urlParam}`);
+    formik.resetForm();
+
   }
 
   return (
