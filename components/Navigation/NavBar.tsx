@@ -9,20 +9,20 @@ export default function NavBar(props: any) {
         <div className='relative flex items-center justify-end w-full max-w-3xl py-8 mx-auto'>
 
           {/* On Mobile - Hamburger */}
-          <div className="block md:hidden">
+          <div className="hidden">
             <MobileMenu />
           </div>
 
 
           {/* Desktop Menu */}
-          <div className='hidden text-gray-400 gap-x-5 md:block'>
+          <div className='flex items-center justify-end text-gray-400 gap-x-4'>
+            <Link href={'/'}>
+              <a>Home</a>
+            </Link>
             <Link href={'/about'}>
               <a>About</a>
             </Link>
-            <Link href={'/about'}>
-              <a>Contact</a>
-            </Link>
-            <Link href={'/about'}>
+            <Link href={'/faq'}>
               <a>FAQ</a>
             </Link>
           </div>

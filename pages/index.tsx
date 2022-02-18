@@ -22,7 +22,7 @@ export default function Home() {
 
           {/* Input for scanner data */}
           <PageSection>
-            <ScanWebPageInput></ScanWebPageInput>
+            <ScanWebPageInput />
           </PageSection>
         </PageContainer>
       </SWRConfig>

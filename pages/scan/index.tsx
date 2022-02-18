@@ -24,11 +24,14 @@ export default function ScanResultsPage() {
 
 
         {data && (
-          <div>fetched data {JSON.stringify(data)}</div>
+          <div>fetched data !!!! </div>
         )}
 
         {isLoading && (
-          <p>loading</p>
+          <div>
+            <p>Skeleton loader</p>
+            <div className='w-5 h-5 rounded skeleton-loader md'></div>
+          </div>
         )}
 
 
