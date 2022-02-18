@@ -6,6 +6,9 @@
 @tailwind utilities;
 
 
+.spinner {
+   border-right: 0.25em solid transparent;
+}
 .skeleton-loader {
   position: relative;
   overflow: hidden;
