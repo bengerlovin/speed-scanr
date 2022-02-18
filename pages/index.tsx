@@ -1,6 +1,7 @@
 import Footer from '@/components/Navigation/Footer';
 import NavBar from '@/components/Navigation/NavBar';
-import ScanWebPageInput from '@/components/Scanner/ScanWebPageInput';
+import Scanner from '@/components/Scanner/Scanner';
+import ScanWebPageInput from '@/components/Scanner/ScanForm';
 import PageContainer from '@/layouts/PageContainer';
 import PageSection from '@/layouts/PageSection';
 import Link from 'next/link';
@@ -20,10 +21,14 @@ export default function Home() {
             <p>hello from speed scanr</p>
           </PageSection>
 
-          {/* Input for scanner data */}
+          {/* scanner */}
           <PageSection>
-            <ScanWebPageInput />
+
+            <Scanner />
+
           </PageSection>
+
+
         </PageContainer>
       </SWRConfig>
     </div>

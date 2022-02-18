@@ -1,8 +1,19 @@
+import { LighthouseResults, MetricsResults } from '@/types/scan-results'
 import React, { useState, useEffect } from 'react'
 
-const usePageResultsFetch = (URL: string) => {
+export type ParsedResults = {
+    desktop: { lighthouse: LighthouseResults, metrics: MetricsResults }
+    mobile: { lighthouse: LighthouseResults, metrics: MetricsResults }
+}
 
-    const [isLoading, setIsLoading] = useState(true)
+export default function usePageResultsFetcher(URL: string): {
+    data: ParsedResults;
+    errorState: boolean;
+    errorData: string;
+    isLoading: boolean;
+} {
+
+    const [isLoading, setIsLoading] = useState(false)
     const [errorState, setErrorState] = useState(false)
     const [errorData, setErrorData] = useState(null)
     const [data, setData] = useState(null)
@@ -18,14 +29,18 @@ const usePageResultsFetch = (URL: string) => {
                 return;
             }
 
-            console.log("fetching data")
+            //  ensure that parent component is aware that data is null
+            setData(null)
+
+            console.log("fetching data for this url in usePageResultsHook", URL)
             try {
 
                 let raw = await fetch(`/api/scan/${encodeURIComponent(URL)}`)
-                let data = await raw.json();
+                let data: ParsedResults = await raw.json();
                 console.log("data found from api call", data)
                 setIsLoading(false)
                 setData(data);
+                setErrorState(false)
             }
             catch (error) {
                 setErrorData(error)
@@ -84,5 +99,3 @@ async function fetchPageResultsData(url: string) {
 //     // https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https%3A%2F%2Fgoogle.com&key=AIzaSyAgYF38EQC3lvSDD5TGxSyKrrinxJ3728Y
 //     return query;
 // }
-
-export default usePageResultsFetch

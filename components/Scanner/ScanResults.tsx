@@ -1,36 +1,49 @@
 import PageContainer from '@/layouts/PageContainer';
 import PageSection from '@/layouts/PageSection';
+import { MetricResult } from '@/types/scan-results';
 import usePageResultsFetch from 'lib/usePageResultsFetch';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import useSWR from 'swr';
+import MobileDesktopToggle from './MobileDesktopToggle';
 
 
 
-export default function ScanResults({ url }: { url: string }) {
+export default function ScanResults() {
 
 
-    const { data, isLoading, errorData, errorState } = usePageResultsFetch(url);
+    console.log("------------------- scan results re rendered ----------------")
+
 
 
 
     return (
         <PageSection>
-            <div className='flex'>{url}</div>
+
+            <p>in scan results!</p>
 
 
-            {data && (
-                <div className='flex flex-wrap'>
+            {/* {data && (
+                <div className='flex flex-col flex-wrap'>
                     <div>fetched data !!!! </div>
-                </div>
-            )}
+                    <MobileDesktopToggle toggleState={showMobileResults} toggleFunction={setShowMobileResults} />
 
-            {isLoading && (
-                <div>
-                    <p>Skeleton loader</p>
-                    <div className='w-5 h-5 rounded skeleton-loader md'></div>
+                    <div>
+                        {showMobileResults && (
+                            <p>showing mobile</p>
+                        )}
+                        {!showMobileResults && (
+                            <p>desktop</p>
+                        )}
+                    </div>
+
+                    <div>
+                        <p>type of data.desktop.metrics: {typeof data.desktop.metrics}</p>
+                        
+                    </div>
                 </div>
-            )}
+            )} */}
+
 
 
 
