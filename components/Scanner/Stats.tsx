@@ -1,8 +1,8 @@
 const Stats = ({ title, time, status }) => {
     return (
-        <>
-            <p>I'm a stat card</p>
-        </>
+        <div>
+            <p>{`I'm a stat`}</p>
+        </div>
     )
 }
 

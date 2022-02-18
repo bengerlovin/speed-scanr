@@ -69,7 +69,7 @@ const Scanner = ({ }) => {
                     <ScanResults />
                 )}
                 {isLoading && (
-                    <p>loading</p>
+                    <p>{`I'm loading`}</p>
                 )}
 
             </PageSection>
