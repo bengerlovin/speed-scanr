@@ -9,9 +9,6 @@ import { URLRegex } from "lib/url-regex"
 
 const Scanner = ({ }) => {
 
-    console.log("----------- scanner re rendered ------------ ")
-
-
     // State
     const [pageResultsData, setPageResultsData] = useState(null)
     const [errorState, setErrorState] = useState(false)
@@ -58,15 +55,16 @@ const Scanner = ({ }) => {
         <>
 
             {/* Form Element With Button */}
-            <PageSection>
+            <PageSection margin="mt-4" fullWidth alignment='items-center'>
                 <ScanForm disabled={isLoading} formik={formik} />
             </PageSection>
 
             {/* Results From Scan */}
-            <PageSection>
+            <PageSection margin="mt-4" fullWidth >
 
                 {pageResultsData && !isLoading && !errorState && (
-                    <ScanResults />
+                    <ScanResults desktopResults={pageResultsData.desktop}
+                        mobileResults={pageResultsData.mobile} />
                 )}
                 {isLoading && (
                     <p>{`I'm loading`}</p>

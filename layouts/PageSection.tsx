@@ -1,12 +1,30 @@
 import React from 'react';
 
-export default function PageSection({ children, ...props }) {
+type PageSectionProps = {
+  children: React.ReactNode;
+  margin?: string;
+  fullWidth?: boolean;
+  alignment?: string;
+}
+
+export default function PageSection({ children, margin, fullWidth, alignment }: PageSectionProps) {
+
+
+  let marginStying: string = margin ?? 'my-0'
+  let widthStyling: string = ''
+  let alignmentStyles: string = 'items-start'
+
+  if (fullWidth) {
+    widthStyling = 'w-full';
+  }
+  if (alignment) {
+    alignmentStyles = alignment;
+  }
+
   return (
     <>
-      <section className='flex flex-col justify-center'>
-        <div className='flex flex-col items-start justify-between w-full max-w-3xl mx-auto mb-6'>
-          {children}
-        </div>
+      <section className={`flex flex-col ${widthStyling} ${alignment} justify-center ${marginStying}`}>
+        {children}
       </section>
     </>
   );

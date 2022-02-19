@@ -9,9 +9,6 @@ import Spinner from './Spinner';
 export default function ScanWebPageInput({ disabled: isLoading, formik }) {
 
 
-  console.log("------------------- input re rendered ----------------")
-
-
   return (
     <div>
 
@@ -26,9 +23,9 @@ export default function ScanWebPageInput({ disabled: isLoading, formik }) {
             placeholder='http://example.com'
             value={formik.values.url}
             onChange={formik.handleChange}
-            className={`rounded-md ring-1 focus:ring-blue-500 ${formik.touched.url && formik.errors.url ? 'ring-1 focus:ring-red-500 focus:border-red-500 ring-red-400 outline-red-400 border-red-500' : ''}`}
+            className={`w-52 sm:w-80 flex-shrink-1 flex-grow rounded-md ring-1 placeholder:text-base focus:ring-blue-500 ${formik.touched.url && formik.errors.url ? 'ring-1 focus:ring-red-500 focus:border-red-500 ring-red-400 outline-red-400 border-red-500' : ''}`}
           ></input>
-          <button onClick={() => formik.handleSubmit} type='submit' disabled={isLoading} className='ml-4 px-3 inline-block cursor-pointer hover:bg-blue-400 transition-colors duration-200 ease-in-out py-1.5 bg-blue-700 rounded-md text-slate-100'>
+          <button onClick={() => formik.handleSubmit} type='submit' disabled={isLoading} className='flex-shrink-0 inline-block px-3 py-2 ml-4 transition-colors duration-200 ease-in-out bg-blue-700 rounded-md cursor-pointer hover:bg-blue-400 text-slate-100'>
 
             {isLoading && (
               <span className='relative flex items-center justify-center w-full h-full'>
@@ -36,7 +33,7 @@ export default function ScanWebPageInput({ disabled: isLoading, formik }) {
               </span>
             )}
             <span className={isLoading ? 'invisible' : 'visible'}>
-              Scan URL
+              Analyze URL
             </span>
 
 

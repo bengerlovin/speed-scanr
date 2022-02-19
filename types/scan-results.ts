@@ -6,24 +6,14 @@ export type MetricResult = {
     id: string;
     title: string;
     description: string;
+    score: number;
     displayValue: string;
     numericUnit: 'millisecond' | 'second' | 'unitless'
     numericValue: number;
 }
 
 export type LighthouseResults = {
-    keyAudits: {
-        'dom-size': AuditResult;
-        'render-blocking-resources': AuditResult;
-        'total-blocking-time': AuditResult;
-        'uses-responsive-images': AuditResult;
-        'offscreen-images': AuditResult;
-        'final-screenshot': AuditImage;
-        'redirects': AuditResult;
-        'uses-optimized-images': AuditResult;
-        'server-responsive-time': AuditResult & ServerResponseTimeDetails;
-        'font-display': AuditResult;
-    };
+    keyAudits: Array<AuditResult & AuditImage & AuditResult & ServerResponseTimeDetails>
     allAuditData?: Array<AuditResult | AuditImage | AuditResult & ServerResponseTimeDetails>
     runWarning?: any[];
     stackPacks?: StackPack[];
@@ -37,13 +27,11 @@ export type AuditResult = {
     numericUnit: 'millisecond' | 'second' | 'unitless' | 'element'
     score: number;
     scoreDisplayMode: string;
+    displayValue: string;
     title: string;
 }
 
-export type AuditImage = {
-    description: string;
-    title: string;
-    id: string;
+export type AuditImage = AuditResult & {
     details: {
         data: string;
         timing: number;
@@ -52,7 +40,7 @@ export type AuditImage = {
 
 }
 
-export type ServerResponseTimeDetails = {
+export type ServerResponseTimeDetails = AuditResult & {
     details: {
         items: { url: string; responsiveTime: number; }[]
         overallSavingsMs: number
@@ -70,14 +58,14 @@ export type StackPack = {
     title: string;
 }
 
-export type KeyAuditId = keyof LighthouseResults['keyAudits']
+export type KeyAuditId = typeof KeyAuditIdValues[number]
 
 export type AuditResultArray = Array<AuditResult | AuditImage | AuditResult & ServerResponseTimeDetails>
 
 export type GenericAuditResult = AuditResult | AuditImage | AuditResult & ServerResponseTimeDetails
 
-const KeyAuditIdValues = ["dom-size", "render-blocking-resources", "total-blocking-time", "uses-responsive-images", "offscreen-images", "final-screenshot", "redirects", "uses-optimized-images", "server-responsive-time", "font-display"]
+const KeyAuditIdValues = ['dom-size', 'render-blocking-resources', 'total-blocking-time', 'uses-responsive-images', 'offscreen-images', 'redirects', 'uses-optimized-images', 'server-responsive-time', 'font-display'] as const;
 
 export function isKeyAudit(keyValue: string): keyValue is KeyAuditId {
-    return KeyAuditIdValues.includes(keyValue);
+    return KeyAuditIdValues.includes(keyValue as KeyAuditId);
 }

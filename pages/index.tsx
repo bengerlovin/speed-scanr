@@ -17,13 +17,13 @@ export default function Home() {
         }}
       >
         <PageContainer>
-          <PageSection>
-            <h1 className='text-[42px] leading-[1.15] font-bold tracking-tight text-gray-800 font-inter'>Pagespeed Data Simplified</h1>
-            <p className='mt-4 tracking-tight leading-[1.38]'>Test your website's performance and get prioritized, actionable tips on how to improve it. </p>
+          <PageSection fullWidth alignment='items-center'>
+            <h1 className='text-[43px] leading-[1.15] font-extrabold tracking-heading text-gray-800 font-inter text-center'>Pagespeed Results Simplified</h1>
+            <p className='text-center mt-4 tracking-tight leading-[1.38]'>{`Test your website's performance and get prioritized, actionable tips on how to improve it. `}</p>
           </PageSection>
 
           {/* scanner */}
-          <PageSection>
+          <PageSection fullWidth alignment='items-center' margin='mt-2'>
             <Scanner />
           </PageSection>
 
