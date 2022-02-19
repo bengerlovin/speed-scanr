@@ -107,7 +107,7 @@ function firstContentfulPaint(rank: 'passed' | 'medium' | 'high') {
                 <p className="my-2">
                     First contentful paint (FCP) is a <span>Core Web Vital</span> metric. It measures when the browser renders the first bit of content on a webpage, giving visual feedback to the user that the webpage is, in fact, loading.
                 </p>
-                <p> This website had a FCP score above 0.9 out of 1, a very high rank. According to Google's Pagespeed Insights ranking, this metric is passed. </p>
+                <p>{` This website had a FCP score above 0.9 out of 1, a very high rank. According to Google's Pagespeed Insights ranking, this metric is passed.`} </p>
             </div>
         )
     } else if (rank === 'medium') {
@@ -162,7 +162,7 @@ function speedIndex(rank: 'passed' | 'medium' | 'high') {
     } else {
         return (
             <p>
-                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
+                Failed blocking time spectacularly. <a target={'_blank'} rel="noreferrer" href="https://google.com">Link to something!</a>
             </p>
         )
     }
@@ -210,7 +210,7 @@ function firstMeaningfulPaint(rank: 'passed' | 'medium' | 'high') {
     } else {
         return (
             <p>
-                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
+                Failed blocking time spectacularly. <a target={'_blank'} rel="noreferrer" href="https://google.com">Link to something!</a>
             </p>
         )
     }
@@ -234,7 +234,7 @@ function totalBlockingTime(rank: 'passed' | 'medium' | 'high') {
     } else {
         return (
             <p>
-                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
+                Failed blocking time spectacularly. <a target={'_blank'} rel="noreferrer" href="https://google.com">Link to something!</a>
             </p>
         )
     }
@@ -257,7 +257,7 @@ function domSize(rank: 'passed' | 'medium' | 'high') {
     } else {
         return (
             <p>
-                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
+                Failed blocking time spectacularly. <a target={'_blank'} rel="noreferrer" href="https://google.com">Link to something!</a>
             </p>
         )
     }
@@ -280,7 +280,7 @@ function responsiveImages(rank: 'passed' | 'medium' | 'high') {
     } else {
         return (
             <p>
-                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
+                Failed blocking time spectacularly. <a target={'_blank'} rel="noreferrer" href="https://google.com">Link to something!</a>
             </p>
         )
     }
@@ -303,7 +303,7 @@ function offscreenImages(rank: 'passed' | 'medium' | 'high') {
     } else {
         return (
             <p>
-                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
+                Failed blocking time spectacularly. <a target={'_blank'} rel="noreferrer" href="https://google.com">Link to something!</a>
             </p>
         )
     }
@@ -326,7 +326,7 @@ function redirects(rank: 'passed' | 'medium' | 'high') {
     } else {
         return (
             <p>
-                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
+                Failed blocking time spectacularly. <a target={'_blank'} rel="noreferrer" href="https://google.com">Link to something!</a>
             </p>
         )
     }
@@ -349,7 +349,7 @@ function renderBlockingResources(rank: 'passed' | 'medium' | 'high') {
     } else {
         return (
             <p>
-                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
+                Failed blocking time spectacularly. <a target={'_blank'} rel="noreferrer" href="https://google.com">Link to something!</a>
             </p>
         )
     }
@@ -372,7 +372,7 @@ function fontDisplay(rank: 'passed' | 'medium' | 'high') {
     } else {
         return (
             <p>
-                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
+                Failed blocking time spectacularly. <a target={'_blank'} rel="noreferrer" href="https://google.com">Link to something!</a>
             </p>
         )
     }
@@ -395,7 +395,7 @@ function optimizedImages(rank: 'passed' | 'medium' | 'high') {
     } else {
         return (
             <p>
-                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
+                Failed blocking time spectacularly. <a target={'_blank'} rel="noreferrer" href="https://google.com">Link to something!</a>
             </p>
         )
     }
