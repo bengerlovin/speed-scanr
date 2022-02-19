@@ -1,0 +1,379 @@
+export const recommendations = {
+
+    'total-blocking-time': {
+        passed: totalBlockingTime('passed'),
+        medium: totalBlockingTime('medium'),
+        high: totalBlockingTime('high'),
+
+    },
+
+    'dom-size': {
+        passed: domSize('passed'),
+        medium: domSize('medium'),
+        high: domSize('high'),
+
+    },
+    'uses-responsive-images': {
+        passed: responsiveImages('passed'),
+        medium: responsiveImages('medium'),
+        high: responsiveImages('high'),
+
+    },
+    'offscreen-images': {
+        passed: offscreenImages('passed'),
+        medium: offscreenImages('medium'),
+        high: offscreenImages('high'),
+
+    },
+    'redirects': {
+        passed: redirects('passed'),
+        medium: redirects('medium'),
+        high: redirects('high'),
+
+    },
+    'render-blocking-resources': {
+        passed: renderBlockingResources('passed'),
+        medium: renderBlockingResources('medium'),
+        high: renderBlockingResources('high'),
+
+    },
+    'font-display': {
+        passed: fontDisplay('passed'),
+        medium: fontDisplay('medium'),
+        high: fontDisplay('high'),
+
+    },
+    'uses-optimized-images': {
+        passed: optimizedImages('passed'),
+        medium: optimizedImages('medium'),
+        high: optimizedImages('high'),
+
+    },
+
+}
+
+export const metrics = {
+
+
+    'first-contentful-paint': {
+        passed: firstMeaningfulPaint('passed'),
+        medium: firstMeaningfulPaint('medium'),
+        high: firstMeaningfulPaint('high'),
+
+    },
+
+    'speed-index': {
+        passed: speedIndex('passed'),
+        medium: speedIndex('medium'),
+        high: speedIndex('high'),
+
+    },
+
+    'interactive': {
+        passed: timeToInteractive('passed'),
+        medium: timeToInteractive('medium'),
+        high: timeToInteractive('high'),
+
+    },
+
+    'first-meaningful-paint': {
+        passed: firstMeaningfulPaint('passed'),
+        medium: firstMeaningfulPaint('medium'),
+        high: firstMeaningfulPaint('high'),
+
+    },
+
+}
+
+
+export function getRank(score: number): 'passed' | 'medium' | 'high' {
+    if (score < 0.5) {
+        return 'high'
+    } else if (score > 0.5 && score < 0.9) {
+        return 'medium'
+    } else {
+        return 'passed'
+    }
+}
+
+
+// Metrics
+
+function firstContentfulPaint(rank: 'passed' | 'medium' | 'high') {
+
+    if (rank === 'passed') {
+        return (
+            <p>
+                Passed blocking time with flying colors
+            </p>
+        )
+    } else if (rank === 'medium') {
+        return (
+            <p>
+
+            </p>
+        )
+    } else {
+        return (
+            <p>
+                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
+            </p>
+        )
+    }
+}
+
+function speedIndex(rank: 'passed' | 'medium' | 'high') {
+
+    if (rank === 'passed') {
+        return (
+            <p>
+                Passed blocking time with flying colors
+            </p>
+        )
+    } else if (rank === 'medium') {
+        return (
+            <p>
+
+            </p>
+        )
+    } else {
+        return (
+            <p>
+                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
+            </p>
+        )
+    }
+}
+
+function timeToInteractive(rank: 'passed' | 'medium' | 'high') {
+
+    if (rank === 'passed') {
+        return (
+            <p>
+                Passed blocking time with flying colors
+            </p>
+        )
+    } else if (rank === 'medium') {
+        return (
+            <p>
+
+            </p>
+        )
+    } else {
+        return (
+            <p>
+                low time to interactive
+
+            </p>
+        )
+    }
+}
+
+function firstMeaningfulPaint(rank: 'passed' | 'medium' | 'high') {
+
+    if (rank === 'passed') {
+        return (
+            <p>
+                Passed blocking time with flying colors
+            </p>
+        )
+    } else if (rank === 'medium') {
+        return (
+            <p>
+                medium meaningful paint result!
+
+            </p>
+        )
+    } else {
+        return (
+            <p>
+                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
+            </p>
+        )
+    }
+}
+
+// Audits
+function totalBlockingTime(rank: 'passed' | 'medium' | 'high') {
+
+    if (rank === 'passed') {
+        return (
+            <p>
+                Passed blocking time with flying colors
+            </p>
+        )
+    } else if (rank === 'medium') {
+        return (
+            <p>
+
+            </p>
+        )
+    } else {
+        return (
+            <p>
+                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
+            </p>
+        )
+    }
+}
+
+function domSize(rank: 'passed' | 'medium' | 'high') {
+
+    if (rank === 'passed') {
+        return (
+            <p>
+                Passed blocking time with flying colors
+            </p>
+        )
+    } else if (rank === 'medium') {
+        return (
+            <p>
+
+            </p>
+        )
+    } else {
+        return (
+            <p>
+                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
+            </p>
+        )
+    }
+}
+
+function responsiveImages(rank: 'passed' | 'medium' | 'high') {
+
+    if (rank === 'passed') {
+        return (
+            <p>
+                Passed blocking time with flying colors
+            </p>
+        )
+    } else if (rank === 'medium') {
+        return (
+            <p>
+
+            </p>
+        )
+    } else {
+        return (
+            <p>
+                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
+            </p>
+        )
+    }
+}
+
+function offscreenImages(rank: 'passed' | 'medium' | 'high') {
+
+    if (rank === 'passed') {
+        return (
+            <p>
+                Passed blocking time with flying colors
+            </p>
+        )
+    } else if (rank === 'medium') {
+        return (
+            <p>
+
+            </p>
+        )
+    } else {
+        return (
+            <p>
+                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
+            </p>
+        )
+    }
+}
+
+function redirects(rank: 'passed' | 'medium' | 'high') {
+
+    if (rank === 'passed') {
+        return (
+            <p>
+                Passed blocking time with flying colors
+            </p>
+        )
+    } else if (rank === 'medium') {
+        return (
+            <p>
+
+            </p>
+        )
+    } else {
+        return (
+            <p>
+                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
+            </p>
+        )
+    }
+}
+
+function renderBlockingResources(rank: 'passed' | 'medium' | 'high') {
+
+    if (rank === 'passed') {
+        return (
+            <p>
+                Passed blocking time with flying colors
+            </p>
+        )
+    } else if (rank === 'medium') {
+        return (
+            <p>
+
+            </p>
+        )
+    } else {
+        return (
+            <p>
+                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
+            </p>
+        )
+    }
+}
+
+function fontDisplay(rank: 'passed' | 'medium' | 'high') {
+
+    if (rank === 'passed') {
+        return (
+            <p>
+                Passed blocking time with flying colors
+            </p>
+        )
+    } else if (rank === 'medium') {
+        return (
+            <p>
+
+            </p>
+        )
+    } else {
+        return (
+            <p>
+                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
+            </p>
+        )
+    }
+}
+
+function optimizedImages(rank: 'passed' | 'medium' | 'high') {
+
+    if (rank === 'passed') {
+        return (
+            <p>
+                Passed blocking time with flying colors
+            </p>
+        )
+    } else if (rank === 'medium') {
+        return (
+            <p>
+
+            </p>
+        )
+    } else {
+        return (
+            <p>
+                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
+            </p>
+        )
+    }
+}

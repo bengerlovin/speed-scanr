@@ -1,28 +1,16 @@
 import { MetricResult } from "@/types/scan-results"
+import { metrics, recommendations } from "lib/recommendations"
 import { useState } from "react"
 import Modal from "./Modal"
 
 type ScoreType = | 'low' | 'medium' | 'high'
 
-const MetricCard = ({ metricItem }: { metricItem: MetricResult }) => {
+const MetricCard = ({ metricItem, rank }: { metricItem: MetricResult, rank: 'passed' | 'medium' | 'high' }) => {
 
     let { title, description, displayValue, score, id } = metricItem
 
     const [metricModalOpen, setMetricModalOpen] = useState(false)
 
-    function classesBasedOnScore(score: number) {
-        let lowScore = ' bg-red-500'
-        let mediumScore = ' bg-yellow-500'
-        let highScore = ' bg-green-500'
-
-        if (score < 0.5) {
-            return lowScore
-        } else if (score > 0.5 && score < 0.8) {
-            return mediumScore
-        } else {
-            return highScore
-        }
-    }
 
     function statusClasses(score) {
 
@@ -50,40 +38,25 @@ const MetricCard = ({ metricItem }: { metricItem: MetricResult }) => {
 
             {/* Extra Info Modal */}
             <Modal isOpen={metricModalOpen} setIsOpen={setMetricModalOpen} title={metricItem.title}>
-                {metricItem.id === 'speed-index' &&
-                    <div>
-                        <p> speed index description!!!!!!!</p>
-                        <p> speed index description!!!!!!!</p>
-                        <p> speed index description!!!!!!!</p>
-                    </div>
-                }
-                {metricItem.id === 'first-contentful-paint' &&
-                    <div>
-                        <p>First contentful paint stuff</p>
-                        <p>First contentful paint stuff</p>
-                        <p>First contentful paint stuff</p>
-                        <p>First contentful paint stuff</p>
-                    </div>
-                }
-                {metricItem.id === 'interactive' &&
-                    <div>
-                        <p>time to interactive stuff</p>
-                        <p>time to interactive stuff</p>
-                        <p>time to interactive stuff</p>
-                        <p>time to interactive stuff</p>
-                    </div>
-                }
-                {metricItem.id === 'first-meaningful-paint' &&
-                    <div>
-                        <p>First meaningful paint stuff</p>
-                        <p>First meaningful paint stuff</p>
-                        <p>First meaningful paint stuff</p>
-                        <p>First meaningful paint stuff</p>
-                    </div>
-                }
+                {metrics[metricItem.id][rank]}
             </Modal>
         </div>
     )
 }
+
+export function classesBasedOnScore(score: number) {
+    let lowScore = ' bg-red-500'
+    let mediumScore = ' bg-yellow-500'
+    let highScore = ' bg-green-500'
+
+    if (score < 0.5) {
+        return lowScore
+    } else if (score > 0.5 && score < 0.9) {
+        return mediumScore
+    } else {
+        return highScore
+    }
+}
+
 
 export default MetricCard
