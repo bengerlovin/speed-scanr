@@ -56,7 +56,7 @@ export default function ScanResults({ desktopResults, mobileResults }: { desktop
                     </div>
 
 
-                    <h2 className='mb-3 text-xl font-semibold tracking-tight mt-7 font-inter'>High-Priority Audits</h2>
+                    <h2 className={`mb-3 text-xl font-semibold tracking-tight mt-7 font-inter ${showAuditTitle(mobileResults, 'high') ? 'inline-block' : 'hidden'}`}>High-Priority Audits ({numberOfAudits(mobileResults, 'high')})</h2>
 
 
                     {/* High Priority Audits */}
@@ -68,7 +68,7 @@ export default function ScanResults({ desktopResults, mobileResults }: { desktop
                         ))}
                     </div>
 
-                    <h2 className='mt-6 mb-3 text-xl font-semibold tracking-tight font-inter'>Medium-Priority Audits</h2>
+                    <h2 className={`mb-3 text-xl font-semibold tracking-tight mt-7 font-inter ${showAuditTitle(mobileResults, 'medium') ? 'inline-block' : 'hidden'}`}>Medium-Priority Audits ({numberOfAudits(mobileResults, 'medium')})</h2>
 
 
                     {/* Medium Priority Audits */}
@@ -80,7 +80,7 @@ export default function ScanResults({ desktopResults, mobileResults }: { desktop
                         ))}
                     </div>
 
-                    <h2 className='mt-6 mb-3 text-xl font-semibold tracking-tight font-inter'>Passed Audits</h2>
+                    <h2 className={`mb-3 text-xl font-semibold tracking-tight mt-7 font-inter ${showAuditTitle(mobileResults, 'passed') ? 'inline-block' : 'hidden'}`}>Passed Audits ({numberOfAudits(mobileResults, 'passed')})</h2>
 
 
                     {/* Passed Priority Audits */}
@@ -106,4 +106,32 @@ export default function ScanResults({ desktopResults, mobileResults }: { desktop
 
         </PageSection >
     );
+}
+
+function showAuditTitle(results: ParsedResults['mobile'] | ParsedResults['desktop'], rank: 'passed' | 'high' | 'medium') {
+
+    if (rank === 'high') {
+        console.log("filtering out high audits")
+        return results.lighthouse.keyAudits.filter(item => item.score < 0.5)?.length > 0
+    } else if (rank === 'medium') {
+        return results.lighthouse.keyAudits.filter(item => item.score > 0.5 && item.score < 0.9)?.length > 0
+    } else {
+
+        return results.lighthouse.keyAudits.filter(item => item.score > 0.9)?.length > 0
+
+    }
+
+}
+
+function numberOfAudits(results: ParsedResults['mobile'] | ParsedResults['desktop'], rank: 'passed' | 'high' | 'medium') {
+    if (rank === 'high') {
+        console.log("filtering out high audits")
+        return results.lighthouse.keyAudits.filter(item => item.score < 0.5)?.length
+    } else if (rank === 'medium') {
+        return results.lighthouse.keyAudits.filter(item => item.score > 0.5 && item.score < 0.9)?.length
+    } else {
+
+        return results.lighthouse.keyAudits.filter(item => item.score > 0.9)?.length
+
+    }
 }

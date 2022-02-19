@@ -67,7 +67,7 @@ const Scanner = ({ }) => {
                         mobileResults={pageResultsData.mobile} />
                 )}
                 {isLoading && (
-                    <p>{`I'm loading`}</p>
+                    <div></div>
                 )}
 
             </PageSection>

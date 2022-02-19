@@ -56,9 +56,9 @@ export const metrics = {
 
 
     'first-contentful-paint': {
-        passed: firstMeaningfulPaint('passed'),
-        medium: firstMeaningfulPaint('medium'),
-        high: firstMeaningfulPaint('high'),
+        passed: firstContentfulPaint('passed'),
+        medium: firstContentfulPaint('medium'),
+        high: firstContentfulPaint('high'),
 
     },
 
@@ -103,21 +103,44 @@ function firstContentfulPaint(rank: 'passed' | 'medium' | 'high') {
 
     if (rank === 'passed') {
         return (
-            <p>
-                Passed blocking time with flying colors
-            </p>
+            <div>
+                <p className="my-2">
+                    First contentful paint (FCP) is a <span>Core Web Vital</span> metric. It measures when the browser renders the first bit of content on a webpage, giving visual feedback to the user that the webpage is, in fact, loading.
+                </p>
+                <p> This website had a FCP score above 0.9 out of 1, a very high rank. According to Google's Pagespeed Insights ranking, this metric is passed. </p>
+            </div>
         )
     } else if (rank === 'medium') {
         return (
-            <p>
-
-            </p>
+            <div>
+                <p className="my-2">
+                    First contentful paint (FCP) is a <span>Core Web Vital</span> metric. It measures when the browser renders the first bit of content on a webpage, giving visual feedback to the user that the webpage is, in fact, loading.
+                </p>
+                <p className="my-2"> A good FCP score to shoot for is around <b>2.5 seconds</b>. Here are some way to improve FCP: </p>
+                <ul>
+                    <li>Enable Website Caching</li>
+                    <li>Use A Faster Server</li>
+                    <li>Eliminate Render Blocking Resources</li>
+                    <li>Preload Critical Resources</li>
+                    <li>Optimize Fonts And Other Static Resources</li>
+                </ul>
+            </div>
         )
     } else {
         return (
-            <p>
-                Failed blocking time spectacularly. <a target={'_blank'} href="https://google.com">Link to something!</a>
-            </p>
+            <div>
+                <p className="my-2">
+                    First contentful paint (FCP) is a <span>Core Web Vital</span> metric. It measures when the browser renders the first bit of content on a webpage, giving visual feedback to the user that the webpage is, in fact, loading.
+                </p>
+                <p className="my-2"> A good FCP score to shoot for is around <b>2.5 seconds</b>. Here are some way to improve FCP: </p>
+                <ul className="list-disc marker:text-gray-300">
+                    <li className="pb-2 pl-2">Enable Website Caching</li>
+                    <li className="pb-2 pl-2">Use A Faster Server</li>
+                    <li className="pb-2 pl-2">Eliminate Render Blocking Resources</li>
+                    <li className="pb-2 pl-2">Preload Critical Resources</li>
+                    <li className="pb-2 pl-2">Optimize Fonts And Other Static Resources</li>
+                </ul>
+            </div>
         )
     }
 }

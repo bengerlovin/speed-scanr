@@ -18,7 +18,7 @@ export default function Home() {
       >
         <PageContainer>
           <PageSection fullWidth alignment='items-center'>
-            <h1 className='text-[43px] leading-[1.15] font-extrabold tracking-heading text-gray-800 font-inter text-center'>Pagespeed Results Simplified</h1>
+            <h1 className='text-[43px] md:text-[48px] leading-[1.15] font-extrabold tracking-heading text-gray-800 font-inter text-center'>Pagespeed Results Simplified</h1>
             <p className='text-center mt-4 tracking-tight leading-[1.38]'>{`Test your website's performance and get prioritized, actionable tips on how to improve it. `}</p>
           </PageSection>
 
