@@ -12,15 +12,6 @@ export type MetricResult = {
     numericValue: number;
 }
 
-export type LighthouseResults = {
-    keyAudits: Array<AuditResult & AuditImage & AuditResult & ServerResponseTimeDetails>
-    allAuditData?: Array<AuditResult | AuditImage | AuditResult & ServerResponseTimeDetails>
-    runWarning?: any[];
-    stackPacks?: StackPack[];
-    timing: { total: number }
-}
-
-
 export type AuditResult = {
     description: string;
     id: string;
@@ -30,6 +21,17 @@ export type AuditResult = {
     displayValue: string;
     title: string;
 }
+
+
+export type LighthouseResults = {
+    keyAudits: Array<AuditResult & AuditImage & AuditResult & ServerResponseTimeDetails>
+    allAuditData?: Array<AuditResult | AuditImage | AuditResult & ServerResponseTimeDetails>
+    runWarning?: any[];
+    stackPacks?: StackPack[];
+    timing: { total: number }
+}
+
+
 
 export type AuditImage = AuditResult & {
     details: {
